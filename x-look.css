@@ -25,10 +25,12 @@ html.xlk body {
 
 /* X pins the timeline + rail wrapper to the left at a 990px max width. With
    the rail gone that leaves the column off-centre, so let the wrapper span the
-   page and centre what is left. */
+   page and centre what is left. main also aligns its children to the start,
+   which pins X's 1050px wrapper to the left edge. */
 html.xlk main[role="main"] {
   max-width: none !important;
   width: 100% !important;
+  align-items: center !important;
 }
 
 html.xlk *:has(> [data-testid="primaryColumn"]) {
