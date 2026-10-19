@@ -14,7 +14,11 @@ html.xlk [aria-label="Subscribe to Premium"] {
 /* A faint wash of daylight behind the column; alpha only, so it sits on
    X's own light or dark canvas without fighting it. */
 html.xlk body {
-  background-image: radial-gradient(1200px 600px at 50% -8%, rgba(29, 155, 240, 0.07), transparent 70%);
+  background-image: radial-gradient(
+    1200px 600px at 50% -8%,
+    rgba(29, 155, 240, 0.07),
+    transparent 70%
+  );
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -40,7 +44,9 @@ html.xlk [data-testid="primaryColumn"] {
   margin: 0 auto !important;
   border-left: 0 !important;
   border-right: 0 !important;
-  box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.1), 0 0 40px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 0 0 1px rgba(128, 128, 128, 0.1),
+    0 0 40px rgba(0, 0, 0, 0.05);
 }
 
 /* The timeline as a list, not a feed. */
@@ -125,7 +131,10 @@ html.xlk [data-testid="videoComponent"].xlk-shown img {
   border: 0;
   background: transparent;
   color: rgba(128, 128, 128, 0.95);
-  font: 500 12px/1 ui-sans-serif, system-ui, sans-serif;
+  font:
+    500 12px / 1 ui-sans-serif,
+    system-ui,
+    sans-serif;
   cursor: pointer;
 }
 

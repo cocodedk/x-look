@@ -1,0 +1,22 @@
+# X Look
+
+> X Look is a small Chrome (MV3) extension that turns x.com into a quiet, work-friendly reading list: no left navigation, no trends column, no promoted posts, a calm centred timeline, and images and videos blanked out until you click them.
+
+It changes layout and typography only, through one content script (`x-look.css` + `x-look.js`) on x.com and twitter.com, and leaves X's light/dim/dark theme alone. No build step, no permissions beyond the content script, no data leaves the page. Releases attach `x-look.zip` to GitHub Releases; install it with **Load unpacked** in `chrome://extensions`. Licensed Apache-2.0 by [Cocode](https://cocode.dk).
+
+## Website
+
+- [X Look website](https://xlook.cocode.dk/): English product page
+- [X Look (فارسی)](https://xlook.cocode.dk/fa/): Persian product page
+- [Site llms.txt](https://xlook.cocode.dk/llms.txt): the site declares WebMCP tools (`document.modelContext.registerTool`); this file lists which pages declare them and what each tool does, so an agent on the site should call those tools rather than scrape the page
+
+## Source
+
+- [Repository](https://github.com/cocodedk/x-look): source code and issues
+- [README](https://github.com/cocodedk/x-look/blob/main/README.md): what it hides, install steps, caveats
+- [Latest release zip](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip): the packaged extension
+
+## Optional
+
+- [CONTRIBUTING](https://github.com/cocodedk/x-look/blob/main/CONTRIBUTING.md): local setup, packaging, PR checklist
+- [LICENSE](https://github.com/cocodedk/x-look/blob/main/LICENSE): Apache License 2.0

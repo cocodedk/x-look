@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+SMOKE_CMD="./scripts/check.sh"
+
+$SMOKE_CMD

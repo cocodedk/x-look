@@ -1,8 +1,17 @@
 # X Look — reading mode for x.com
 
+[![Latest release](https://img.shields.io/github/v/release/cocodedk/x-look)](https://github.com/cocodedk/x-look/releases/latest)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/website-xlook.cocode.dk-informational)](https://xlook.cocode.dk/)
+
 A small Chrome extension (MV3) that turns x.com into something you can open at
 work: no left navigation, no trends column, no promoted posts, and a timeline
 that reads like a list instead of a feed.
+
+## Website
+
+- [English](https://xlook.cocode.dk/)
+- [فارسی (Persian)](https://xlook.cocode.dk/fa/)
 
 ## What it does
 
@@ -25,11 +34,32 @@ that reads like a list instead of a feed.
 It only changes layout and typography. X's own light/dim/dark theme is left
 alone, so it works in all three.
 
-## Install (unpacked)
+## Download
 
-1. Open `chrome://extensions`.
-2. Turn on **Developer mode**.
-3. **Load unpacked** → pick this folder.
+[**Download X Look**](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip)
+
+Every release on [GitHub Releases](https://github.com/cocodedk/x-look/releases)
+attaches `x-look.zip`, the packaged extension.
+
+## Install
+
+### From the release zip
+
+1. Download `x-look.zip` (link above) and unzip it into a folder you will keep
+   (Chrome loads the extension from that folder, so do not delete it).
+2. Open `chrome://extensions`.
+3. Turn on **Developer mode**.
+4. **Load unpacked** → pick the unzipped folder (the one containing
+   `manifest.json`).
+
+To update, unzip the new release over the same folder and click the reload icon
+on the extension card.
+
+### From source
+
+1. `git clone https://github.com/cocodedk/x-look.git`
+2. Open `chrome://extensions`, turn on **Developer mode**.
+3. **Load unpacked** → pick the cloned folder.
 
 Works in Chrome, Edge and other Chromium browsers.
 
@@ -44,6 +74,7 @@ in-page toggle — the nav stays gone while the extension is on).
 | `x-look.css` | All the hiding and reading-list styling |
 | `x-look.js` | Promoted-post filter and the image/video reveal buttons |
 | `icons/` | Extension icons |
+| `website/` | Source of [xlook.cocode.dk](https://xlook.cocode.dk/) (English + Persian) |
 
 ## Caveats
 
@@ -55,3 +86,16 @@ in-page toggle — the nav stays gone while the extension is on).
   be rare.
 - Narrow (mobile-width) windows keep X's bottom bar, so navigation still works
   where there is no room for, or use of, a left nav.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, packaging the release
+zip and the PR checklist.
+
+## Author
+
+**Babak Bandpey** — [https://cocode.dk](https://cocode.dk) | [LinkedIn](https://linkedin.com/in/babakbandpey) | [GitHub](https://github.com/cocodedk)
+
+## License
+
+Apache-2.0 | © 2026 [Cocode](https://cocode.dk) | Created by [Babak Bandpey](https://linkedin.com/in/babakbandpey)

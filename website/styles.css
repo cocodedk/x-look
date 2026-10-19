@@ -1,0 +1,382 @@
+/* X Look site. The page is the thing it sells: one calm reading column on a
+   fog background, the extension's yellow X as the only bright colour. */
+
+:root {
+  --fog: #e9ecee;
+  --paper: #f8f9f9;
+  --ink: #1e252b;
+  --quiet: #57626b;
+  --rule: #d3d8dc;
+  --ghost: #dde2e5;
+  --signal: #f2c230;
+  --signal-ink: #1e252b;
+  --serif: "Newsreader", Charter, "Iowan Old Style", Georgia, serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fog: #121619;
+    --paper: #191e22;
+    --ink: #e3e7e9;
+    --quiet: #9aa5ad;
+    --rule: #2d353b;
+    --ghost: #262d32;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fog);
+  color: var(--ink);
+  font: 400 1.0625rem / 1.65 var(--serif);
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+[dir="rtl"] body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* The column */
+.page {
+  max-width: 660px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.brand svg {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.25rem;
+  color: var(--quiet);
+}
+
+main > section,
+.hero {
+  padding: 2.25rem 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h1,
+h2 {
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 8vw, 3rem);
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2 {
+  letter-spacing: 0;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 1rem;
+  text-wrap: pretty;
+}
+
+.lede {
+  font-size: 1.1875rem;
+  color: var(--quiet);
+}
+
+[dir="rtl"] .lede {
+  font-size: 1.0625rem;
+}
+
+/* The one bright thing on the page */
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: var(--signal);
+  color: var(--signal-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.download:hover {
+  background: #e6b31c;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin: 1.5rem 0 0;
+}
+
+.actions .source {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* The schematic: x.com in three columns, and the two that X Look takes away */
+.scheme {
+  margin: 2rem 0 0;
+}
+
+.scheme svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scheme figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.9375rem;
+  color: var(--quiet);
+}
+
+.s-frame {
+  fill: var(--fog);
+  stroke: var(--rule);
+}
+.s-col {
+  fill: var(--paper);
+  stroke: var(--rule);
+}
+.s-line {
+  fill: var(--rule);
+}
+.s-tile {
+  fill: var(--ghost);
+}
+.s-eye {
+  fill: var(--quiet);
+}
+.s-dot {
+  fill: var(--rule);
+}
+
+.s-gone rect {
+  fill: var(--ghost);
+  stroke: var(--quiet);
+  stroke-width: 1;
+  stroke-dasharray: 0;
+  transition:
+    fill 900ms ease,
+    stroke-dasharray 900ms ease,
+    opacity 900ms ease;
+}
+
+.s-gone .s-fill {
+  fill: var(--quiet);
+  opacity: 0.35;
+  stroke: none;
+}
+
+/* One moment on load: the furniture empties out. */
+.scheme.calm .s-gone rect {
+  fill: transparent;
+  stroke-dasharray: 4 5;
+  opacity: 0.7;
+}
+
+.scheme.calm .s-gone .s-fill {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-gone rect {
+    transition: none;
+  }
+}
+
+/* What it does */
+.changes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.changes li {
+  padding: 1rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.changes li:first-child {
+  border-top: 0;
+  padding-top: 0.25rem;
+}
+
+.changes p {
+  margin: 0.25rem 0 0;
+  color: var(--quiet);
+}
+
+/* Install: a real sequence, so it is numbered */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 1rem 2.6rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.1em;
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  font-size: 0.875rem;
+  color: var(--quiet);
+}
+
+[dir="rtl"] .steps li {
+  padding: 0 2.6rem 1rem 0;
+}
+
+[dir="rtl"] .steps li::before {
+  content: counter(step, persian);
+}
+
+code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--ghost);
+  overflow-wrap: anywhere;
+}
+
+[dir="rtl"] code {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.note {
+  font-size: 0.9375rem;
+  color: var(--quiet);
+}
+
+.credits p {
+  margin: 0 0 0.35rem;
+}
+
+footer {
+  padding: 1.5rem 1rem 2.5rem;
+  font-size: 0.9375rem;
+  color: var(--quiet);
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .bar {
+    padding: 0.75rem 2.5rem;
+  }
+
+  main > section,
+  .hero {
+    padding: 3rem 2.5rem;
+  }
+
+  .hero {
+    padding-top: 4rem;
+  }
+
+  footer {
+    padding: 1.75rem 2.5rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    min-height: 0;
+  }
+}

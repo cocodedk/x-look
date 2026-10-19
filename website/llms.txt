@@ -1,0 +1,23 @@
+# X Look
+
+> X Look is a free Chrome (MV3) extension that turns x.com into a quiet, work-friendly reading list: no left nav, no trends column, no Grok or messages drawer, no promoted posts, one calm centred column, and images and videos hidden until you click them.
+
+This site has WebMCP tools. Both pages register them with `document.modelContext.registerTool`, so an agent in the visitor's browser can call them instead of scraping the page. All three are read-only, take no input, and answer in the page's own language.
+
+## Pages that declare WebMCP tools
+
+- [English](https://xlook.cocode.dk/): declares `describe`, `list_features`, `get_install_steps`
+- [فارسی (Persian)](https://xlook.cocode.dk/fa/): declares the same three tools, answering in Persian
+
+## Tools
+
+- `describe`: says what the page is; returns `{ language, title, summary, download_url, sections: [{ id, heading }], tools: [string] }`
+- `list_features`: lists every change X Look makes to x.com; returns `{ language, features: [{ name, detail }] }`
+- `get_install_steps`: the ordered install steps and the download link; returns `{ language, download_url, steps: [string] }`. It installs nothing.
+
+The tools work in Chrome with WebMCP switched on (`chrome://flags/#enable-webmcp-testing`); elsewhere the pages read as plain HTML.
+
+## Links
+
+- [Download x-look.zip](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip): the latest release
+- [Source](https://github.com/cocodedk/x-look): code, issues, README

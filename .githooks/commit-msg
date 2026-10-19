@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+MSG=$(cat "$1")
+# Let git's own merge/revert/fixup messages through.
+echo "$MSG" | head -1 | grep -qE '^(Merge |Revert "|fixup! |squash! )' && exit 0
+if ! echo "$MSG" | grep -qE '^(feat|fix|chore|docs|style|refactor|test|ci|build|perf|revert)(\(.+\))?: .+'; then
+  echo "ERROR: Commit message must follow Conventional Commits."
+  echo "  Example: feat: add user login"
+  echo "  Types: feat|fix|chore|docs|style|refactor|test|ci|build|perf|revert"
+  exit 1
+fi

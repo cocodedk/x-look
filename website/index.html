@@ -1,0 +1,176 @@
+<!doctype html>
+<!-- SEO keywords:
+     primary:   X reading mode extension
+     secondary: hide X sidebar and trends, calm x.com timeline, block promoted posts on X
+     intent:    transactional
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>X Look — X reading mode extension for Chrome · Cocode</title>
+  <meta name="description" content="X Look is a free Chrome extension that gives x.com a reading mode: no left nav, no trends, no promoted posts, and pictures hidden until you click." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://xlook.cocode.dk/" />
+  <link rel="alternate" hreflang="en" href="https://xlook.cocode.dk/" />
+  <link rel="alternate" hreflang="fa" href="https://xlook.cocode.dk/fa/" />
+  <link rel="alternate" hreflang="x-default" href="https://xlook.cocode.dk/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="X Look" />
+  <meta property="og:title" content="X Look — read X at work without the noise" />
+  <meta property="og:description" content="One calm column instead of three busy ones. No nav, no trends, no ads, and pictures stay grey until you ask for them." />
+  <meta property="og:url" content="https://xlook.cocode.dk/" />
+  <meta property="og:image" content="https://xlook.cocode.dk/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="A sketch of x.com with the left nav and right rail drawn as empty dashed outlines, leaving one reading column, beside the words X Look, reading mode for x.com." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="fa_IR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="X Look — read X at work without the noise" />
+  <meta name="twitter:description" content="One calm column instead of three busy ones. No nav, no trends, no ads, and pictures stay grey until you ask for them." />
+  <meta name="twitter:image" content="https://xlook.cocode.dk/og.png" />
+  <meta name="twitter:image:alt" content="A sketch of x.com with the left nav and right rail drawn as empty dashed outlines, leaving one reading column." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "X Look",
+    "alternateName": "X Look — Reading Mode",
+    "description": "X Look is a Chrome extension that turns x.com into a quiet reading list: it removes the left navigation, the trends column, Grok and the messages drawer, drops promoted posts, sets the timeline in one centred serif column, and hides images and videos until you click them.",
+    "url": "https://xlook.cocode.dk/",
+    "downloadUrl": "https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Edge and other Chromium browsers",
+    "inLanguage": ["en", "fa"],
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": {
+      "@type": "Person",
+      "name": "Babak Bandpey",
+      "url": "https://cocode.dk",
+      "sameAs": ["https://linkedin.com/in/babakbandpey", "https://github.com/cocodedk"]
+    },
+    "codeRepository": "https://github.com/cocodedk/x-look"
+  }
+  </script>
+  <script type="module" src="webmcp.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="bar">
+      <a class="brand" href="./" aria-label="X Look home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1e252b"/><path d="M10 10l12 12M22 10L10 22" stroke="#f2c230" stroke-width="4.2" stroke-linecap="round"/></svg>
+        X Look
+      </a>
+      <nav aria-label="Language">
+        <a href="fa/" class="lang-switch" hreflang="fa" lang="fa">فارسی</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>A reading mode for X that you can open at work</h1>
+        <p class="lede">X Look is a small Chrome extension that takes the furniture off x.com. The left nav, the trends, Grok and the ads are gone. What is left is one quiet column of posts, and the pictures stay grey until you ask for them.</p>
+        <div class="actions">
+          <a class="download" data-download href="https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip">Download x-look.zip</a>
+          <a class="source" href="https://github.com/cocodedk/x-look">Source on GitHub</a>
+        </div>
+
+        <figure class="scheme" id="scheme">
+          <svg viewBox="0 0 600 330" role="img" aria-labelledby="scheme-cap">
+            <rect class="s-frame" x="0.5" y="0.5" width="599" height="329" rx="12" />
+            <circle class="s-dot" cx="20" cy="18" r="4" /><circle class="s-dot" cx="34" cy="18" r="4" /><circle class="s-dot" cx="48" cy="18" r="4" />
+            <g class="s-gone">
+              <rect x="18" y="38" width="110" height="274" rx="8" />
+              <rect class="s-fill" x="32" y="56" width="70" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="78" width="56" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="100" width="64" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="122" width="50" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="268" width="82" height="26" rx="13" />
+            </g>
+            <g class="s-gone">
+              <rect x="460" y="38" width="122" height="274" rx="8" />
+              <rect class="s-fill" x="472" y="52" width="98" height="18" rx="9" />
+              <rect class="s-fill" x="472" y="86" width="98" height="60" rx="6" />
+              <rect class="s-fill" x="472" y="160" width="98" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="178" width="78" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="196" width="88" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="230" width="98" height="60" rx="6" />
+            </g>
+            <rect class="s-col" x="146" y="38" width="296" height="274" rx="2" />
+            <rect class="s-line" x="166" y="58" width="90" height="7" rx="3.5" />
+            <rect class="s-line" x="166" y="76" width="250" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="88" width="236" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="100" width="170" height="5" rx="2.5" />
+            <rect class="s-tile" x="166" y="114" width="256" height="56" rx="8" />
+            <path class="s-eye" d="M281 142c4-6 9-8 13-8s9 2 13 8c-4 6-9 8-13 8s-9-2-13-8zm13 4.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z" />
+            <rect class="s-line" x="146" y="190" width="296" height="1" />
+            <rect class="s-line" x="166" y="208" width="76" height="7" rx="3.5" />
+            <rect class="s-line" x="166" y="226" width="244" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="238" width="252" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="250" width="200" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="262" width="120" height="5" rx="2.5" />
+          </svg>
+          <figcaption id="scheme-cap">x.com with X Look on: the nav and the right rail are gone, the timeline sits alone in the middle, and a photo waits behind a grey tile.</figcaption>
+        </figure>
+      </div>
+
+      <section id="features" aria-labelledby="features-h">
+        <h2 id="features-h">What it changes on x.com</h2>
+        <ul class="changes">
+          <li data-feature><h3>No left nav</h3><p>It is removed, not tucked behind a hover. On a narrow window X's own bottom bar stays, so you can still get around.</p></li>
+          <li data-feature><h3>No right rail</h3><p>Search, “Subscribe to Premium”, today's trends and who-to-follow all go.</p></li>
+          <li data-feature><h3>No Grok, no messages drawer</h3><p>Both stay out of the corner of your eye.</p></li>
+          <li data-feature><h3>No promoted posts</h3><p>Ads are dropped by their exact label, so an ordinary post that happens to say “promoted” stays.</p></li>
+          <li data-feature><h3>A calmer timeline</h3><p>One 660px column in the middle, posts set in a serif at 17px with room between the lines, hairline separators, and the like and repost buttons dimmed until you hover.</p></li>
+          <li data-feature><h3>Pictures and videos wait for you</h3><p>Each one becomes a small grey tile. Click a tile and only that item opens; a video starts playing when you do. A post with four photos opens one photo at a time.</p></li>
+          <li data-feature><h3>Your theme stays yours</h3><p>X Look only changes layout and type. Light, dim and dark all keep working.</p></li>
+        </ul>
+      </section>
+
+      <section id="install" aria-labelledby="install-h">
+        <h2 id="install-h">Install it in Chrome</h2>
+        <ol class="steps">
+          <li>Download <a href="https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip">x-look.zip</a> and unzip it.</li>
+          <li>Open <code>chrome://extensions</code>.</li>
+          <li>Turn on <strong>Developer mode</strong>, top right.</li>
+          <li>Click <strong>Load unpacked</strong> and choose the unzipped folder.</li>
+          <li>Reload x.com.</li>
+        </ol>
+        <p class="note">Works in Chrome, Edge and other Chromium browsers. To switch it off, disable it in <code>chrome://extensions</code>; there is no toggle on the page itself.</p>
+      </section>
+
+      <section id="good-to-know" aria-labelledby="know-h">
+        <h2 id="know-h">Good to know</h2>
+        <p>X changes its page often. X Look holds on to the few hooks X keeps stable, such as the banner, the primary column and the tweet itself, rather than generated class names, so it should rarely break. If it does, please open an issue on GitHub.</p>
+        <p>It asks for no permissions beyond running on x.com and twitter.com, and nothing you read leaves the page.</p>
+        <div class="credits">
+          <p>Created by <a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noreferrer">Babak Bandpey</a>.</p>
+          <p>Built by <a href="https://cocode.dk" target="_blank" rel="noreferrer">Cocode</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Apache-2.0 &nbsp;|&nbsp; © 2026 <a href="https://cocode.dk" target="_blank" rel="noreferrer">Cocode</a> &nbsp;|&nbsp; Created by <a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noreferrer">Babak Bandpey</a></p>
+    </footer>
+  </div>
+  <script>
+    (() => {
+      const s = document.getElementById('scheme');
+      const now = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(() => s.classList.add('calm'), now ? 0 : 900);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Release builds
+dist/
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
