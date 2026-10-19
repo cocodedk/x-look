@@ -1,0 +1,120 @@
+/* X Look — reading mode for x.com */
+
+/* Furniture: left nav, right rail (search, trends, who to follow, premium),
+   Grok, DMs. Nothing here comes back on hover. */
+html.xlk header[role="banner"],
+html.xlk [data-testid="sidebarColumn"],
+html.xlk [data-testid="GrokDrawer"],
+html.xlk [data-testid="DMDrawer"],
+html.xlk [data-testid="premiumSignUpCard"],
+html.xlk [aria-label="Subscribe to Premium"] {
+  display: none !important;
+}
+
+/* A faint wash of daylight behind the column; alpha only, so it sits on
+   X's own light or dark canvas without fighting it. */
+html.xlk body {
+  background-image: radial-gradient(1200px 600px at 50% -8%, rgba(29, 155, 240, 0.07), transparent 70%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* One centred reading column, closer to a book page than a dashboard. */
+html.xlk [data-testid="primaryColumn"] {
+  width: min(660px, 100vw) !important;
+  max-width: 660px !important;
+  margin: 0 auto !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.1), 0 0 40px rgba(0, 0, 0, 0.05);
+}
+
+/* The timeline as a list, not a feed. */
+html.xlk article[data-testid="tweet"] {
+  padding: 18px 24px !important;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.16) !important;
+  transition: background 150ms ease;
+}
+
+html.xlk article[data-testid="tweet"]:hover {
+  background: rgba(128, 128, 128, 0.045) !important;
+}
+
+html.xlk [data-testid="User-Name"] {
+  letter-spacing: -0.01em;
+}
+
+html.xlk [data-testid="tweetText"] {
+  font-family: Charter, "Iowan Old Style", Georgia, Cambria, serif !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0.05px !important;
+  text-wrap: pretty;
+}
+
+html.xlk [data-testid="tweetText"] a {
+  text-decoration: none !important;
+  text-underline-offset: 3px;
+}
+
+html.xlk [data-testid="tweetText"] a:hover {
+  text-decoration: underline !important;
+  text-decoration-color: rgba(29, 155, 240, 0.5) !important;
+}
+
+html.xlk article[data-testid="tweet"] div[role="group"]:has([data-testid="like"]) {
+  opacity: 0.5;
+}
+
+html.xlk article[data-testid="tweet"]:hover div[role="group"]:has([data-testid="like"]) {
+  opacity: 0.85;
+}
+
+/* Images sit behind a neutral tile with a click-to-show button. */
+html.xlk [data-testid="tweetPhoto"] {
+  position: relative !important;
+  max-height: 180px !important;
+  border-radius: 14px !important;
+  background: rgba(128, 128, 128, 0.1);
+  outline: 1px solid rgba(128, 128, 128, 0.12);
+  outline-offset: -1px;
+  overflow: hidden !important;
+}
+
+html.xlk [data-testid="tweetPhoto"] img {
+  max-height: 300px !important;
+  object-fit: cover !important;
+  visibility: hidden;
+}
+
+html.xlk [data-testid="tweetPhoto"].xlk-shown {
+  max-height: 300px !important;
+}
+
+html.xlk [data-testid="tweetPhoto"].xlk-shown img {
+  visibility: visible;
+}
+
+.xlk-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: rgba(128, 128, 128, 0.95);
+  font: 500 12px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.xlk-reveal:hover {
+  color: #1d9bf0;
+}
+
+.xlk-reveal svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
