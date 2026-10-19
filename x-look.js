@@ -20,7 +20,9 @@ const MEDIA = '[data-testid="tweetPhoto"], [data-testid="videoComponent"]';
 function hideMedia(media) {
   // X swaps a revealed preview for a player nested inside the same tile;
   // only the outermost tile is ours to blank.
-  if (media.classList.contains("xlk-shown") || media.parentElement?.closest(MEDIA)) return;
+  const outer = media.parentElement?.closest(MEDIA);
+  if (outer) return hideMedia(outer);
+  if (media.classList.contains("xlk-shown")) return;
   media.querySelector("video")?.pause();
 
   // X often wraps a clip in tweetPhoto as a preview with its own play button,
@@ -76,6 +78,7 @@ function scan(node) {
 
   for (const span of node.querySelectorAll("article span")) {
     if (span.childElementCount || !NOISE.test(span.textContent)) continue;
+    if (span.closest('[data-testid="tweetText"], [data-testid="User-Name"]')) continue;
     span.closest('div[dir="ltr"]')?.classList.add("xlk-gone");
   }
 

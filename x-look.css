@@ -142,6 +142,8 @@ html.xlk .xlk-shown [data-testid="videoComponent"] {
 }
 
 /* Fullscreen drops the cap, or the player stays a 300px strip. */
+html.xlk :fullscreen [data-testid="tweetPhoto"],
+html.xlk :fullscreen div:has(> [style*="padding-bottom"] + div .xlk-shown),
 html.xlk :fullscreen [data-testid="videoComponent"],
 html.xlk :fullscreen [data-testid="videoComponent"] video,
 html.xlk [data-testid="videoComponent"]:fullscreen,
