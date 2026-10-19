@@ -19,6 +19,20 @@ html.xlk body {
   background-attachment: fixed;
 }
 
+/* X pins the timeline + rail wrapper to the left at a 990px max width. With
+   the rail gone that leaves the column off-centre, so let the wrapper span the
+   page and centre what is left. */
+html.xlk main[role="main"] {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+html.xlk *:has(> [data-testid="primaryColumn"]) {
+  width: 100% !important;
+  max-width: none !important;
+  justify-content: center !important;
+}
+
 /* One centred reading column, closer to a book page than a dashboard. */
 html.xlk [data-testid="primaryColumn"] {
   width: min(660px, 100vw) !important;
