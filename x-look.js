@@ -18,19 +18,32 @@ const MEDIA = '[data-testid="tweetPhoto"], [data-testid="videoComponent"]';
 // Each picture or clip gets its own reveal button, so a multi-image post can
 // be opened one at a time. Re-renders are tolerated: no button, no wrapper.
 function hideMedia(media) {
-  if (media.classList.contains("xlk-shown") || media.querySelector(".xlk-reveal")) return;
-  const isVideo = media.dataset.testid === "videoComponent";
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "xlk-reveal";
-  button.title = isVideo ? "Show video" : "Show image";
-  button.setAttribute("aria-label", button.title);
-  button.innerHTML = `${isVideo ? PLAY : EYE}<span>${isVideo ? "Video" : "Image"}</span>`;
-  media.append(button);
+  // X swaps a revealed preview for a player nested inside the same tile;
+  // only the outermost tile is ours to blank.
+  if (media.classList.contains("xlk-shown") || media.parentElement?.closest(MEDIA)) return;
+  media.querySelector("video")?.pause();
 
-  const clip = media.querySelector("video");
-  clip?.pause();
+  // X often wraps a clip in tweetPhoto as a preview with its own play button,
+  // and may render that preview after the tile, so the label is re-checked.
+  const isVideo =
+    media.dataset.testid === "videoComponent" ||
+    !!media.querySelector('video, [data-testid="previewInterstitial"]');
+  let button = media.querySelector(":scope > .xlk-reveal");
+  if (!button) {
+    button = document.createElement("button");
+    button.type = "button";
+    button.className = "xlk-reveal";
+    media.append(button);
+  }
+  const title = isVideo ? "Show video" : "Show image";
+  if (button.title !== title) {
+    button.title = title;
+    button.setAttribute("aria-label", title);
+    button.innerHTML = `${isVideo ? PLAY : EYE}<span>${isVideo ? "Video" : "Image"}</span>`;
+  }
 
+  if (media.dataset.xlk) return;
+  media.dataset.xlk = "1";
   // The whole frame is the control, not just the little button, and the click
   // must not fall through to X's lightbox link. Capture runs first, so a click
   // on the tile, the video or the button all land here once.
@@ -40,15 +53,31 @@ function hideMedia(media) {
       event.preventDefault();
       event.stopPropagation();
       media.classList.add("xlk-shown");
-      button.remove();
-      clip?.play().catch(() => {});
+      media.querySelector(":scope > .xlk-reveal")?.remove();
+      media
+        .querySelector("video")
+        ?.play()
+        .catch(() => {});
+      media.querySelector('[data-testid="playButton"]')?.click();
     },
     { capture: true, once: true },
   );
 }
 
+// Post furniture with no stable hook, matched by its exact English label.
+const NOISE = /^(Made with AI|Translated from .+)$/;
+
 function scan(node) {
   if (!(node instanceof Element)) return;
+
+  // X re-renders a tile's insides and drops our button with them.
+  const host = node.closest(MEDIA);
+  if (host) hideMedia(host);
+
+  for (const span of node.querySelectorAll("article span")) {
+    if (span.childElementCount || !NOISE.test(span.textContent)) continue;
+    span.closest('div[dir="ltr"]')?.classList.add("xlk-gone");
+  }
 
   const labels = node.matches('[data-testid="socialContext"]')
     ? [node]

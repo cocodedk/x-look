@@ -6,6 +6,9 @@ html.xlk header[role="banner"],
 html.xlk [data-testid="sidebarColumn"],
 html.xlk [data-testid="GrokDrawer"],
 html.xlk [data-testid="DMDrawer"],
+html.xlk [aria-label="Grok actions"],
+html.xlk [role="group"] > div:has(> a[href$="/analytics"]),
+html.xlk .xlk-gone,
 html.xlk [data-testid="premiumSignUpCard"],
 html.xlk [aria-label="Subscribe to Premium"] {
   display: none !important;
@@ -69,7 +72,7 @@ html.xlk [data-testid="User-Name"] {
 html.xlk [data-testid="tweetText"] {
   font-family: Charter, "Iowan Old Style", Georgia, Cambria, serif !important;
   font-size: 17px !important;
-  line-height: 1.65 !important;
+  line-height: 1.5 !important;
   letter-spacing: 0.05px !important;
   text-wrap: pretty;
 }
@@ -85,7 +88,7 @@ html.xlk [data-testid="tweetText"] a:hover {
 }
 
 html.xlk article[data-testid="tweet"] div[role="group"]:has([data-testid="like"]) {
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
 html.xlk article[data-testid="tweet"]:hover div[role="group"]:has([data-testid="like"]) {
@@ -96,6 +99,8 @@ html.xlk article[data-testid="tweet"]:hover div[role="group"]:has([data-testid="
 html.xlk [data-testid="tweetPhoto"],
 html.xlk [data-testid="videoComponent"] {
   position: relative !important;
+  /* X sizes the tile absolutely; as relative it collapses to 0px. */
+  height: 100% !important;
   max-height: 180px !important;
   border-radius: 14px !important;
   background: rgba(128, 128, 128, 0.1);
@@ -109,11 +114,30 @@ html.xlk [data-testid="videoComponent"] video,
 html.xlk [data-testid="videoComponent"] img {
   max-height: 300px !important;
   object-fit: cover !important;
-  visibility: hidden;
+}
+
+/* X sizes the media frame with an aspect-ratio spacer (inline padding-bottom),
+   which leaves a tall empty gap under a 180px tile; cap the frame instead. */
+html.xlk div:has(> [style*="padding-bottom"] + div [data-testid="tweetPhoto"]) {
+  max-height: 180px !important;
+  overflow: hidden !important;
+}
+
+html.xlk div:has(> [style*="padding-bottom"] + div .xlk-shown) {
+  max-height: 300px !important;
+}
+
+/* Until revealed, everything in the tile but our button is invisible: X
+   draws video previews as background images and puts its own play button
+   on top, so hiding only <img> and <video> leaks both. */
+html.xlk [data-testid="tweetPhoto"]:not(.xlk-shown, .xlk-shown *) > :not(.xlk-reveal),
+html.xlk [data-testid="videoComponent"]:not(.xlk-shown, .xlk-shown *) > :not(.xlk-reveal) {
+  opacity: 0 !important;
 }
 
 html.xlk [data-testid="tweetPhoto"].xlk-shown,
-html.xlk [data-testid="videoComponent"].xlk-shown {
+html.xlk [data-testid="videoComponent"].xlk-shown,
+html.xlk .xlk-shown [data-testid="videoComponent"] {
   max-height: 300px !important;
 }
 
@@ -124,12 +148,6 @@ html.xlk [data-testid="videoComponent"]:fullscreen,
 html.xlk [data-testid="videoComponent"]:fullscreen video {
   max-height: none !important;
   object-fit: contain !important;
-}
-
-html.xlk [data-testid="tweetPhoto"].xlk-shown img,
-html.xlk [data-testid="videoComponent"].xlk-shown video,
-html.xlk [data-testid="videoComponent"].xlk-shown img {
-  visibility: visible;
 }
 
 .xlk-reveal {
