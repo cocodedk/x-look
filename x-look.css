@@ -115,6 +115,15 @@ html.xlk [data-testid="videoComponent"].xlk-shown {
   max-height: 300px !important;
 }
 
+/* Fullscreen drops the cap, or the player stays a 300px strip. */
+html.xlk :fullscreen [data-testid="videoComponent"],
+html.xlk :fullscreen [data-testid="videoComponent"] video,
+html.xlk [data-testid="videoComponent"]:fullscreen,
+html.xlk [data-testid="videoComponent"]:fullscreen video {
+  max-height: none !important;
+  object-fit: contain !important;
+}
+
 html.xlk [data-testid="tweetPhoto"].xlk-shown img,
 html.xlk [data-testid="videoComponent"].xlk-shown video,
 html.xlk [data-testid="videoComponent"].xlk-shown img {
