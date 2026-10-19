@@ -19,22 +19,32 @@ const MEDIA = '[data-testid="tweetPhoto"], [data-testid="videoComponent"]';
 // be opened one at a time. Re-renders are tolerated: no button, no wrapper.
 function hideMedia(media) {
   if (media.classList.contains("xlk-shown") || media.querySelector(".xlk-reveal")) return;
-  const video = media.dataset.testid === "videoComponent";
+  const isVideo = media.dataset.testid === "videoComponent";
   const button = document.createElement("button");
   button.type = "button";
   button.className = "xlk-reveal";
-  button.title = video ? "Show video" : "Show image";
+  button.title = isVideo ? "Show video" : "Show image";
   button.setAttribute("aria-label", button.title);
-  button.innerHTML = `${video ? PLAY : EYE}<span>${video ? "Video" : "Image"}</span>`;
-  button.addEventListener("click", (event) => {
-    // The media usually sits inside a link to the lightbox; don't follow it.
-    event.preventDefault();
-    event.stopPropagation();
-    media.classList.add("xlk-shown");
-    button.remove();
-  });
-  media.querySelector("video")?.pause();
+  button.innerHTML = `${isVideo ? PLAY : EYE}<span>${isVideo ? "Video" : "Image"}</span>`;
   media.append(button);
+
+  const clip = media.querySelector("video");
+  clip?.pause();
+
+  // The whole frame is the control, not just the little button, and the click
+  // must not fall through to X's lightbox link. Capture runs first, so a click
+  // on the tile, the video or the button all land here once.
+  media.addEventListener(
+    "click",
+    (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      media.classList.add("xlk-shown");
+      button.remove();
+      clip?.play().catch(() => {});
+    },
+    { capture: true, once: true },
+  );
 }
 
 function scan(node) {

@@ -17,9 +17,10 @@ that reads like a list instead of a feed.
   the like/retweet bar dimmed until you hover a post.
 - **Blanks out images and videos**: each picture becomes a compact grey tile
   with an eye "Image" button, each clip a tile with a play "Video" button
-  (hidden clips are paused). Click one and only that item appears, up to 300px,
-  so a four-photo post is opened one picture at a time. Clicking a tile does
-  not follow the media link.
+  (hidden clips are paused). Click anywhere on the tile and only that item
+  appears, up to 300px, so a four-photo post is opened one picture at a time;
+  a revealed clip starts playing. Clicking a tile does not follow the media
+  link.
 
 It only changes layout and typography. X's own light/dim/dark theme is left
 alone, so it works in all three.
