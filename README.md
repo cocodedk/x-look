@@ -18,11 +18,12 @@ that reads like a list instead of a feed.
 - **Removes the left nav entirely.** It is gone, not hidden behind a hover.
 - **Hides the right rail**: search, "Subscribe to Premium", today's trends,
   who-to-follow.
-- **Hides Grok and the messages drawer.**
+- **Hides Grok and the messages drawer**, plus the per-post Grok button,
+  the view count, and the "Translated from …" and "Made with AI" lines.
 - **Drops promoted/ads** from the timeline (exact label match, so a normal post
   that happens to say "promoted" stays).
 - **Calms the timeline**: a 660px centred column with a hairline edge and a
-  faint wash behind it, serif tweet text at 17px/1.65, hairline separators,
+  faint wash behind it, serif tweet text at 17px/1.5, hairline separators,
   the like/retweet bar dimmed until you hover a post.
 - **Blanks out images and videos**: each picture becomes a compact grey tile
   with an eye "Image" button, each clip a tile with a play "Video" button
