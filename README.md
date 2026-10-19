@@ -15,10 +15,11 @@ that reads like a list instead of a feed.
 - **Calms the timeline**: a 660px centred column with a hairline edge and a
   faint wash behind it, serif tweet text at 17px/1.65, hairline separators,
   the like/retweet bar dimmed until you hover a post.
-- **Blanks out images**: each picture becomes a compact grey tile with an eye
-  "Image" button. Click it and that one image appears (up to 300px); a
-  four-photo post can be opened one picture at a time. Clicking the tile does
-  not follow the photo link.
+- **Blanks out images and videos**: each picture becomes a compact grey tile
+  with an eye "Image" button, each clip a tile with a play "Video" button
+  (hidden clips are paused). Click one and only that item appears, up to 300px,
+  so a four-photo post is opened one picture at a time. Clicking a tile does
+  not follow the media link.
 
 It only changes layout and typography. X's own light/dim/dark theme is left
 alone, so it works in all three.
@@ -40,7 +41,7 @@ in-page toggle — the nav stays gone while the extension is on).
 | --- | --- |
 | `manifest.json` | MV3 manifest and content script match |
 | `x-look.css` | All the hiding and reading-list styling |
-| `x-look.js` | Promoted-post filter and the image reveal buttons |
+| `x-look.js` | Promoted-post filter and the image/video reveal buttons |
 | `icons/` | Extension icons |
 
 ## Caveats
@@ -48,7 +49,8 @@ in-page toggle — the nav stays gone while the extension is on).
 - X changes its DOM regularly. Everything here keys off stable-ish hooks
   (`header[role="banner"]`, `[data-testid="sidebarColumn"]`,
   `[data-testid="primaryColumn"]`, `[data-testid="tweet"]`,
-  `[data-testid="tweetPhoto"]`), not generated class names, so breakage should
+  `[data-testid="tweetPhoto"]`, `[data-testid="videoComponent"]`), not
+  generated class names, so breakage should
   be rare.
 - Narrow (mobile-width) windows keep X's bottom bar, so navigation still works
   where there is no room for, or use of, a left nav.

@@ -84,8 +84,9 @@ html.xlk article[data-testid="tweet"]:hover div[role="group"]:has([data-testid="
   opacity: 0.85;
 }
 
-/* Images sit behind a neutral tile with a click-to-show button. */
-html.xlk [data-testid="tweetPhoto"] {
+/* Images and videos sit behind a neutral tile with a click-to-show button. */
+html.xlk [data-testid="tweetPhoto"],
+html.xlk [data-testid="videoComponent"] {
   position: relative !important;
   max-height: 180px !important;
   border-radius: 14px !important;
@@ -95,17 +96,22 @@ html.xlk [data-testid="tweetPhoto"] {
   overflow: hidden !important;
 }
 
-html.xlk [data-testid="tweetPhoto"] img {
+html.xlk [data-testid="tweetPhoto"] img,
+html.xlk [data-testid="videoComponent"] video,
+html.xlk [data-testid="videoComponent"] img {
   max-height: 300px !important;
   object-fit: cover !important;
   visibility: hidden;
 }
 
-html.xlk [data-testid="tweetPhoto"].xlk-shown {
+html.xlk [data-testid="tweetPhoto"].xlk-shown,
+html.xlk [data-testid="videoComponent"].xlk-shown {
   max-height: 300px !important;
 }
 
-html.xlk [data-testid="tweetPhoto"].xlk-shown img {
+html.xlk [data-testid="tweetPhoto"].xlk-shown img,
+html.xlk [data-testid="videoComponent"].xlk-shown video,
+html.xlk [data-testid="videoComponent"].xlk-shown img {
   visibility: visible;
 }
 
