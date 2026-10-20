@@ -1,9 +1,13 @@
 // X Look — content script. CSS hides the furniture; this hides promoted posts
-// and label noise, and puts a click-to-show button on every image and video.
+// and label noise, puts a click-to-show button on every image and video, and
+// adds a filter box. Everything hangs off html.xlk, which the toolbar icon
+// switches on and off through chrome.storage.
 
-document.documentElement.classList.add("xlk");
+const root = document.documentElement;
+const on = () => root.classList.contains("xlk");
 
-// Promoted posts have no stable DOM hook, so match their label. Exact match only: a normal post saying "promoted" must survive.
+// Promoted posts have no stable DOM hook, so match their label. Exact match
+// only: a normal post saying "promoted" must survive.
 const PROMOTED = /^(promoted|ad|sponsored|anzeige|gesponsert|paid partnership)$/i;
 
 const EYE =
@@ -50,7 +54,9 @@ function hideMedia(media) {
     button.className = "xlk-reveal";
     button.title = title;
     button.setAttribute("aria-label", title);
-    button.innerHTML = `${isVideo ? PLAY : EYE}<span>${isVideo ? "Video" : "Image"}</span>`;
+    // The visible word comes from CSS, so it never matches the filter.
+    button.dataset.label = isVideo ? "Video" : "Image";
+    button.innerHTML = isVideo ? PLAY : EYE;
     media.append(button);
   }
 
@@ -60,10 +66,12 @@ function hideMedia(media) {
   frameOf(media).classList.add("xlk-frame");
   // The whole frame is the control, not just the little button, and the click
   // must not fall through to X's lightbox link. Capture runs first, so a click
-  // on the tile, the video or the button all land here once.
+  // on the tile, the video or the button all land here. Switched off, or once
+  // revealed, clicks go to X as usual.
   media.addEventListener(
     "click",
     (event) => {
+      if (!on() || media.classList.contains("xlk-shown")) return;
       event.preventDefault();
       event.stopPropagation();
       media.classList.add("xlk-shown");
@@ -75,16 +83,65 @@ function hideMedia(media) {
         .catch(() => {});
       media.querySelector('[data-testid="playButton"]')?.click();
     },
-    { capture: true, once: true },
+    { capture: true },
   );
 }
 
 // Post furniture with no stable hook, matched by its exact English label.
 const NOISE = /^(Made with AI|Translated from .+)$/;
 
+// The filter box sits in the empty left gutter, on <body> so X's React tree
+// never touches it. A post stays only if it contains every typed word; the
+// rest shrink to a slim line (see x-look.css) and are counted under the box.
+let terms = [];
+// Every post seen while filtering, by its status link, so the count still
+// covers posts X has since scrolled out of the page.
+const seen = new Map();
+const box = document.createElement("div");
+box.className = "xlk-filter";
+const count = document.createElement("div");
+count.className = "xlk-count";
+const search = document.createElement("input");
+search.type = "search";
+search.className = "xlk-search";
+search.placeholder = "Filter posts";
+search.setAttribute("aria-label", "Show only posts containing these words");
+// Keep X's single-key shortcuts (l = like, r = reply, …) out of the box.
+search.addEventListener("keydown", (event) => event.stopPropagation());
+search.addEventListener("input", () => {
+  terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+  for (const article of document.querySelectorAll("article")) filter(article);
+  recount();
+});
+box.append(search, count);
+document.body.prepend(box);
+
+const matches = (text) => terms.every((term) => text.includes(term));
+
+function filter(article) {
+  const text = article.textContent.toLowerCase();
+  const id = article.querySelector('a[href*="/status/"]:has(time)')?.href;
+  if (id) seen.set(id, text);
+  article.classList.toggle("xlk-filtered", !matches(text));
+}
+
+function recount() {
+  let hidden = 0;
+  for (const text of seen.values()) if (!matches(text)) hidden++;
+  count.textContent = terms.length ? `${hidden} hidden` : "";
+}
+
 function scan(node) {
   // Our own buttons need no scan.
   if (!(node instanceof Element) || node.closest(".xlk-reveal")) return;
+
+  if (terms.length) {
+    const posts = [...node.querySelectorAll("article")];
+    const post = node.closest("article");
+    if (post) posts.push(post);
+    for (const article of posts) filter(article);
+    if (posts.length) recount();
+  }
 
   // X re-renders a tile's insides and drops our button with them; closest()
   // also covers the node being a tile itself.
@@ -108,8 +165,19 @@ function scan(node) {
   }
 }
 
-scan(document.body);
+function apply(off) {
+  root.classList.toggle("xlk", !off);
+  if (!off) scan(document.body);
+}
+
+chrome.storage.local.get("off").then(({ off }) => apply(off));
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.off) apply(changes.off.newValue);
+});
+
+// Switched off, X is left alone: no tiles added, no videos paused.
 new MutationObserver((mutations) => {
+  if (!on()) return;
   for (const mutation of mutations) {
     for (const node of mutation.addedNodes) scan(node);
   }

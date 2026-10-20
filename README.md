@@ -25,6 +25,11 @@ that reads like a list instead of a feed.
 - **Calms the timeline**: a 660px centred column with a hairline edge and a
   faint wash behind it, serif tweet text at 17px/1.5, hairline separators,
   the like/retweet bar dimmed until you hover a post.
+- **Filters posts**: a "Filter posts" box sits in the empty gutter left of the
+  column (bottom left on narrow windows). Type words and only posts containing
+  all of them stay; the rest shrink to a slim "hidden by filter" line (so X
+  does not keep loading more on its own) and are counted under the box. Clear
+  the box to see everything again.
 - **Blanks out images and videos**: each picture becomes a compact grey tile
   with an eye "Image" button, each clip a tile with a play "Video" button
   (hidden clips are paused). Click anywhere on the tile and only that item
@@ -64,8 +69,9 @@ on the extension card.
 
 Works in Chrome, Edge and other Chromium browsers.
 
-To turn it off, disable the extension in `chrome://extensions` (there is no
-in-page toggle — the nav stays gone while the extension is on).
+Click the X Look icon in the toolbar to switch it off and on in every x.com tab;
+the icon shows an "off" badge while it is off, and the choice is remembered.
+Pin the icon from the extensions (puzzle) menu to keep it in reach.
 
 ## Files
 
@@ -73,7 +79,8 @@ in-page toggle — the nav stays gone while the extension is on).
 | --- | --- |
 | `manifest.json` | MV3 manifest and content script match |
 | `x-look.css` | All the hiding and reading-list styling |
-| `x-look.js` | Promoted-post filter and the image/video reveal buttons |
+| `background.js` | Toolbar icon: switches X Look off and on |
+| `x-look.js` | Promoted-post and label hiding, the image/video reveal buttons, the filter box, and following the on/off switch |
 | `icons/` | Extension icons |
 | `website/` | Source of [xlook.cocode.dk](https://xlook.cocode.dk/) (English + Persian) |
 

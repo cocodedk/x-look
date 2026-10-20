@@ -2,7 +2,7 @@
 
 > X Look is a small Chrome (MV3) extension that turns x.com into a quiet, work-friendly reading list: no left navigation, no trends column, no promoted posts, a calm centred timeline, and images and videos blanked out until you click them.
 
-It changes layout and typography only, through one content script (`x-look.css` + `x-look.js`) on x.com and twitter.com, and leaves X's light/dim/dark theme alone. No build step, no permissions beyond the content script, no data leaves the page. Releases attach `x-look.zip` to GitHub Releases; install it with **Load unpacked** in `chrome://extensions`. Licensed Apache-2.0 by [Cocode](https://cocode.dk).
+It changes layout and typography only, through one content script (`x-look.css` + `x-look.js`) on x.com and twitter.com, with a toolbar icon (`background.js`) that switches it off and on and a box that filters posts by words, and leaves X's light/dim/dark theme alone. No build step, no permissions beyond the content script and `storage` for the on/off switch, no data leaves the page. Releases attach `x-look.zip` to GitHub Releases; install it with **Load unpacked** in `chrome://extensions`. Licensed Apache-2.0 by [Cocode](https://cocode.dk).
 
 ## Website
 
