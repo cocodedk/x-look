@@ -154,6 +154,7 @@ html.xlk article.xlk-filtered > * {
 html.xlk article.xlk-filtered::before {
   content: "hidden by filter";
   display: block;
+  width: 100%;
   color: rgba(128, 128, 128, 0.6);
   font:
     400 11px / 22px ui-sans-serif,
@@ -195,8 +196,7 @@ html.xlk .xlk-reveal svg {
 
 /* The filter box: a quiet pill in the gutter left of the column, or bottom
    left when the window is too narrow for a gutter (above X's bottom bar on
-   phone widths). #767676 reads on X's light and dark themes; the background
-   is the page's own. */
+   phone widths). #767676 reads on X's light and dark themes. */
 html.xlk .xlk-filter {
   display: block;
   position: fixed;
@@ -204,7 +204,6 @@ html.xlk .xlk-filter {
   top: 14px;
   left: calc(50% - 586px);
   width: 220px;
-  background-color: inherit;
   color: #767676;
   font:
     400 15px / 1.2 ui-sans-serif,
@@ -238,6 +237,9 @@ html.xlk .xlk-count {
     top: auto;
     bottom: 16px;
     left: 16px;
+    /* Here it floats over posts, so give it the page's own background. */
+    border-radius: 20px;
+    background-color: inherit;
   }
 }
 
