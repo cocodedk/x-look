@@ -1,4 +1,4 @@
-// WebMCP: hands an AI agent in the visitor's browser three read-only tools for this page, so it can
+// WebMCP: hands an AI agent in the visitor's browser four read-only tools for this page, so it can
 // read what X Look does and how to install it without scraping. Every answer is read from the page
 // at call time, in the page's own language. Nothing here makes a request.
 // Spec (a draft that has already moved once): https://webmachinelearning.github.io/webmcp/
@@ -55,6 +55,19 @@ const tools = [
       language: language(),
       download_url: downloadUrl(),
       steps: Array.from(document.querySelectorAll('#install .steps li')).map(text),
+    }),
+  },
+  {
+    name: 'get_privacy',
+    title: 'Get the privacy facts',
+    description:
+      "Lists what X Look and this website do and do not do with your data, as stated on this page and in its language; returns { language, summary, points: [string] }.",
+    inputSchema: NO_INPUT,
+    annotations: READ_ONLY,
+    execute: async () => ({
+      language: language(),
+      summary: text(document.querySelector('#privacy .privacy-lede')),
+      points: Array.from(document.querySelectorAll('#privacy li')).map(text),
     }),
   },
 ];

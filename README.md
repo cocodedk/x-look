@@ -95,6 +95,15 @@ Pin the icon from the extensions (puzzle) menu to keep it in reach.
 - Narrow (mobile-width) windows keep X's bottom bar, so navigation still works
   where there is no room for, or use of, a left nav.
 
+## Privacy
+
+X Look collects nothing and sends nothing anywhere. It makes no network
+requests of its own, runs only on x.com and twitter.com, and stores one
+setting (on or off) in Chrome's local extension storage. Filter words and the
+hidden count live only in the tab's memory. It does not stop X's own data
+collection. The full statement, including the website's, is at
+[xlook.cocode.dk/#privacy](https://xlook.cocode.dk/#privacy).
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, packaging the release
