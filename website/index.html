@@ -130,10 +130,11 @@
         <ul class="changes">
           <li data-feature><h3>No left nav</h3><p>It is removed, not tucked behind a hover. On a narrow window X's own bottom bar stays, so you can still get around.</p></li>
           <li data-feature><h3>No right rail</h3><p>Search, “Subscribe to Premium”, today's trends and who-to-follow all go.</p></li>
-          <li data-feature><h3>No Grok, no messages drawer</h3><p>Both stay out of the corner of your eye.</p></li>
+          <li data-feature><h3>No Grok, no clutter</h3><p>The Grok and messages drawers go, and so do each post's Grok button, its view count, and the “Translated from …” and “Made with AI” lines.</p></li>
           <li data-feature><h3>No promoted posts</h3><p>Ads are dropped by their exact label, so an ordinary post that happens to say “promoted” stays.</p></li>
           <li data-feature><h3>A calmer timeline</h3><p>One 660px column in the middle, posts set in a serif at 17px with room between the lines, hairline separators, and the like and repost buttons dimmed until you hover.</p></li>
-          <li data-feature><h3>Filter posts</h3><p>A small box in the empty space left of the column. Type a few words and only posts containing all of them stay.</p></li>
+          <li data-feature><h3>Filter posts</h3><p>A small box in the empty space left of the column. Type a few words and only posts containing all of them stay; the rest fold into a thin line, and the box counts them.</p></li>
+          <li data-feature><h3>On and off with one click</h3><p>Click the X Look icon in the toolbar to switch it off in every x.com tab, and again to bring it back. It remembers your choice.</p></li>
           <li data-feature><h3>Pictures and videos wait for you</h3><p>Each one becomes a small grey tile. Click a tile and only that item opens; a video starts playing when you do. A post with four photos opens one photo at a time.</p></li>
           <li data-feature><h3>Your theme stays yours</h3><p>X Look only changes layout and type. Light, dim and dark all keep working.</p></li>
         </ul>
@@ -151,10 +152,24 @@
         <p class="note">Works in Chrome, Edge and other Chromium browsers. Click the X Look icon in the toolbar to switch it off and on; it remembers your choice.</p>
       </section>
 
+      <section id="privacy" aria-labelledby="privacy-h">
+        <h2 id="privacy-h">Privacy</h2>
+        <p class="privacy-lede">X Look collects nothing and sends nothing anywhere.</p>
+        <ul class="privacy">
+          <li>It makes no network requests of its own: no analytics, no tracking, no ads, and no code loaded from a server.</li>
+          <li>It runs only on x.com and twitter.com and only changes how the page looks. It reads the page inside your browser to do that, and what you read stays there.</li>
+          <li>It stores one thing: whether it is switched on or off, in Chrome's extension storage on this computer. That is the only permission it asks for besides running on X, and the setting is not synced or shared.</li>
+          <li>The words you type in the filter box, and the count of hidden posts, live only in that tab's memory and are gone when you reload or close it.</li>
+          <li>It does not stop X from collecting data. X sees your visit as it would without X Look, and when you open a hidden picture or video, X loads it.</li>
+          <li>The code is open source under Apache-2.0, so you can check every line of this on <a href="https://github.com/cocodedk/x-look">GitHub</a>.</li>
+          <li>This website sets no cookies and runs no analytics. It is hosted on GitHub Pages, which may log visitors' IP addresses (see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer">GitHub's privacy statement</a>), and it loads its fonts from Google Fonts, so your browser also contacts Google. Its WebMCP tools only read this page, in your browser.</li>
+          <li>Questions: <a href="mailto:bb@cocode.dk">bb@cocode.dk</a></li>
+        </ul>
+      </section>
+
       <section id="good-to-know" aria-labelledby="know-h">
         <h2 id="know-h">Good to know</h2>
         <p>X changes its page often. X Look holds on to the few hooks X keeps stable, such as the banner, the primary column and the tweet itself, rather than generated class names, so it should rarely break. If it does, please open an issue on GitHub.</p>
-        <p>It asks for no permissions beyond running on x.com and twitter.com and remembering whether it is on, and nothing you read leaves the page.</p>
         <div class="credits">
           <p>Created by <a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noreferrer">Babak Bandpey</a>.</p>
           <p>Built by <a href="https://cocode.dk" target="_blank" rel="noreferrer">Cocode</a>.</p>
@@ -163,7 +178,7 @@
     </main>
 
     <footer>
-      <p>Apache-2.0 &nbsp;|&nbsp; © 2026 <a href="https://cocode.dk" target="_blank" rel="noreferrer">Cocode</a> &nbsp;|&nbsp; Created by <a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noreferrer">Babak Bandpey</a></p>
+      <p><a href="#privacy">Privacy</a> &nbsp;|&nbsp; Apache-2.0 &nbsp;|&nbsp; © 2026 <a href="https://cocode.dk" target="_blank" rel="noreferrer">Cocode</a> &nbsp;|&nbsp; Created by <a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noreferrer">Babak Bandpey</a></p>
     </footer>
   </div>
   <script>

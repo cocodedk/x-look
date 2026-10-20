@@ -284,6 +284,21 @@ p {
   color: var(--quiet);
 }
 
+/* Privacy: plain facts, a quiet bulleted list */
+.privacy-lede {
+  font-weight: 500;
+}
+
+.privacy {
+  margin: 0;
+  padding-inline-start: 1.2rem;
+}
+
+.privacy li {
+  margin: 0.4rem 0;
+  color: var(--quiet);
+}
+
 /* Install: a real sequence, so it is numbered */
 .steps {
   margin: 0;
