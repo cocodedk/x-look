@@ -1,0 +1,89 @@
+<!doctype html>
+<!-- Source of the Chrome Web Store images: #shot is the 1280x800 screenshot,
+     #promo the 440x280 small promo tile. Rendered by store/render.py. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Calm Reader for X store images</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" />
+<link rel="stylesheet" href="../website/styles.css" />
+<style>
+  :root { color-scheme: light; --fog:#e9ecee; --paper:#f8f9f9; --ink:#1e252b; --quiet:#57626b; --rule:#d3d8dc; --ghost:#dde2e5; }
+  html, body { margin:0; overflow:hidden; background:var(--fog); }
+  .mark { display:flex; align-items:center; gap:14px; font:600 30px/1 var(--serif); color:var(--ink); }
+  .scheme { margin:0; filter: drop-shadow(0 18px 40px rgba(30,37,43,.10)); }
+  .scheme svg { width:100%; }
+  #shot, #promo { display:none; box-sizing:border-box; }
+  body.shot #shot { display:grid; width:1280px; height:800px; grid-template-columns:440px 1fr; gap:56px; align-items:center; padding:0 72px; }
+  body.promo #promo { display:flex; width:440px; height:280px; flex-direction:column; justify-content:center; padding:0 36px; }
+  #shot .mark svg { width:52px; height:52px; }
+  #shot h1 { font:500 64px/1.04 var(--serif); letter-spacing:-0.02em; margin:34px 0 22px; }
+  #shot .sub { font:400 26px/1.45 var(--serif); color:var(--quiet); margin:0; }
+  #promo .mark { font-size:28px; }
+  #promo .mark svg { width:46px; height:46px; }
+  #promo .sub { font:400 20px/1.35 var(--serif); color:var(--quiet); margin:18px 0 0; }
+</style>
+</head>
+<body>
+<div id="shot">
+  <div>
+    <div class="mark"><svg viewBox="0 0 128 128" aria-hidden="true">
+  <rect width="128" height="128" rx="28" fill="#1e252b"/>
+  <rect x="30" y="32" width="68" height="16" rx="8" fill="#f2c230"/>
+  <rect x="30" y="58" width="68" height="11" rx="5.5" fill="#f8f9f9"/>
+  <rect x="30" y="77" width="68" height="11" rx="5.5" fill="#f8f9f9"/>
+  <rect x="30" y="96" width="44" height="11" rx="5.5" fill="#f8f9f9"/>
+</svg>
+Calm Reader for X</div>
+    <h1>A quiet reading column for x.com</h1>
+    <p class="sub">No nav, no trends, no ads. Pictures wait until you click, a filter keeps only the posts you want, and one click on the icon turns it off.</p>
+  </div>
+  <figure class="scheme calm"><svg viewBox="0 0 600 330" aria-hidden="true">
+            <rect class="s-frame" x="0.5" y="0.5" width="599" height="329" rx="12" />
+            <circle class="s-dot" cx="20" cy="18" r="4" /><circle class="s-dot" cx="34" cy="18" r="4" /><circle class="s-dot" cx="48" cy="18" r="4" />
+            <g class="s-gone">
+              <rect x="18" y="38" width="110" height="274" rx="8" />
+              <rect class="s-fill" x="32" y="56" width="70" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="78" width="56" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="100" width="64" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="122" width="50" height="8" rx="4" />
+              <rect class="s-fill" x="32" y="268" width="82" height="26" rx="13" />
+            </g>
+            <g class="s-gone">
+              <rect x="460" y="38" width="122" height="274" rx="8" />
+              <rect class="s-fill" x="472" y="52" width="98" height="18" rx="9" />
+              <rect class="s-fill" x="472" y="86" width="98" height="60" rx="6" />
+              <rect class="s-fill" x="472" y="160" width="98" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="178" width="78" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="196" width="88" height="8" rx="4" />
+              <rect class="s-fill" x="472" y="230" width="98" height="60" rx="6" />
+            </g>
+            <rect class="s-col" x="146" y="38" width="296" height="274" rx="2" />
+            <rect class="s-line" x="166" y="58" width="90" height="7" rx="3.5" />
+            <rect class="s-line" x="166" y="76" width="250" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="88" width="236" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="100" width="170" height="5" rx="2.5" />
+            <rect class="s-tile" x="166" y="114" width="256" height="56" rx="8" />
+            <path class="s-eye" d="M281 142c4-6 9-8 13-8s9 2 13 8c-4 6-9 8-13 8s-9-2-13-8zm13 4.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z" />
+            <rect class="s-line" x="146" y="190" width="296" height="1" />
+            <rect class="s-line" x="166" y="208" width="76" height="7" rx="3.5" />
+            <rect class="s-line" x="166" y="226" width="244" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="238" width="252" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="250" width="200" height="5" rx="2.5" />
+            <rect class="s-line" x="166" y="262" width="120" height="5" rx="2.5" />
+          </svg></figure>
+</div>
+<div id="promo">
+  <div class="mark"><svg viewBox="0 0 128 128" aria-hidden="true">
+  <rect width="128" height="128" rx="28" fill="#1e252b"/>
+  <rect x="30" y="32" width="68" height="16" rx="8" fill="#f2c230"/>
+  <rect x="30" y="58" width="68" height="11" rx="5.5" fill="#f8f9f9"/>
+  <rect x="30" y="77" width="68" height="11" rx="5.5" fill="#f8f9f9"/>
+  <rect x="30" y="96" width="44" height="11" rx="5.5" fill="#f8f9f9"/>
+</svg>
+Calm Reader for X</div>
+  <p class="sub">One calm column on x.com. No nav, no trends, no ads.</p>
+</div>
+<script>document.body.className = location.hash.slice(1) || "shot";</script>
+</body>
+</html>

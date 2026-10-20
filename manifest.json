@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "X Look — Reading Mode",
+  "name": "Calm Reader for X",
   "version": "1.1.0",
   "description": "Turns x.com into a quiet, work-friendly reading list: no left nav, no trends, calmer timeline.",
   "homepage_url": "https://xlook.cocode.dk",
@@ -10,7 +10,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "X Look: click to switch off or on"
+    "default_title": "Calm Reader for X: click to switch off or on"
   },
   "background": {
     "service_worker": "background.js"
