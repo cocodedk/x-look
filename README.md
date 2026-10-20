@@ -101,7 +101,8 @@ X Look collects nothing and sends nothing anywhere. It makes no network
 requests of its own, runs only on x.com and twitter.com, and stores one
 setting (on or off) in Chrome's local extension storage. Filter words and the
 hidden count live only in the tab's memory. It does not stop X's own data
-collection. The full statement, including the website's, is at
+collection, and hidden pictures and videos are still downloaded from X; they
+are only kept out of sight until you click. The full statement, including the website's, is at
 [xlook.cocode.dk/#privacy](https://xlook.cocode.dk/#privacy).
 
 ## Contributing
