@@ -30,6 +30,10 @@ that reads like a list instead of a feed.
   all of them stay; the rest shrink to a slim "hidden by filter" line (so X
   does not keep loading more on its own) and are counted under the box. Clear
   the box to see everything again.
+- **Sorts the posts on the page**: a menu under the filter box re-orders the
+  posts X has loaded, newest first, most liked first, or popular now (likes
+  per hour since posting, so new and popular at once), and "X's order" puts
+  them back. It sorts what is on the page, not your whole timeline.
 - **Blanks out images and videos**: each picture becomes a compact grey tile
   with an eye "Image" button, each clip a tile with a play "Video" button
   (hidden clips are paused). Click anywhere on the tile and only that item
@@ -80,6 +84,8 @@ Pin the icon from the extensions (puzzle) menu to keep it in reach.
 | `manifest.json` | MV3 manifest and content script match |
 | `x-look.css` | All the hiding and reading-list styling |
 | `background.js` | Toolbar icon: switches X Look off and on |
+| `sort.js` | The sort menu: re-orders the loaded posts by time, likes or likes per hour |
+| `controls.css` | Styles for X Look's own controls (reveal buttons, filter box, sort menu) |
 | `x-look.js` | Promoted-post and label hiding, the image/video reveal buttons, the filter box, and following the on/off switch |
 | `icons/` | Extension icons |
 | `website/` | Source of [xlook.cocode.dk](https://xlook.cocode.dk/) (English + Persian) |

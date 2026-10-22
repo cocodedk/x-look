@@ -1,0 +1,106 @@
+/* X Look's own controls: the reveal button on media tiles, and the filter box
+   with its hidden count and sort menu. The page restyling is in x-look.css. */
+
+/* Our own controls only exist while X Look is on. */
+.xlk-reveal,
+.xlk-filter {
+  display: none;
+}
+
+html.xlk .xlk-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: rgba(128, 128, 128, 0.95);
+  font:
+    500 12px / 1 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+html.xlk .xlk-reveal:hover {
+  color: #1d9bf0;
+}
+
+html.xlk .xlk-reveal::after {
+  content: attr(data-label);
+}
+
+html.xlk .xlk-reveal svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* The filter box: a quiet pill in the gutter left of the column, or bottom
+   left when the window is too narrow for a gutter (above X's bottom bar on
+   phone widths). #767676 reads on X's light and dark themes. */
+html.xlk .xlk-filter {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 14px;
+  left: calc(50% - 586px);
+  width: 220px;
+  color: #767676;
+  font:
+    400 15px / 1.2 ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+html.xlk .xlk-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 16px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+html.xlk .xlk-search:focus {
+  border-color: #1d9bf0;
+}
+
+html.xlk .xlk-count {
+  padding: 6px 16px 0;
+  font-size: 12px;
+}
+
+@media (max-width: 1220px) {
+  html.xlk .xlk-filter {
+    top: auto;
+    bottom: 16px;
+    left: 16px;
+    /* Here it floats over posts, so give it the page's own background. */
+    border-radius: 20px;
+    background-color: inherit;
+  }
+}
+
+@media (max-width: 500px) {
+  html.xlk .xlk-filter {
+    bottom: 72px;
+  }
+}
+
+html.xlk .xlk-sort {
+  display: block;
+  margin: 8px 16px 0;
+  padding: 4px 8px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+}
