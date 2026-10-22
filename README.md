@@ -44,38 +44,73 @@ that reads like a list instead of a feed.
 It only changes layout and typography. X's own light/dim/dark theme is left
 alone, so it works in all three.
 
-## Download
+## Install in Chrome
 
-[**Download X Look**](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip)
+You can install X Look straight from GitHub. It works in Google Chrome,
+Microsoft Edge, Brave and other Chromium-based browsers. In the browser it is
+called **Calm Reader for X**, with a yellow X icon.
 
-Every release on [GitHub Releases](https://github.com/cocodedk/x-look/releases)
-attaches `x-look.zip`, the packaged extension.
+Before you start:
 
-## Install
+- You will turn on **Developer mode**, a Chrome setting that lets you add an
+  extension from a folder on your computer. Some work computers block this
+  setting. If the switch is missing or greyed out, your IT department can tell
+  you whether you may use it.
+- An extension installed this way does not update itself. To get a new version,
+  follow [Update to a new version](#update-to-a-new-version) below. A Chrome Web
+  Store version, which updates automatically, has been submitted and is waiting
+  for Google's review.
 
-### From the release zip
+### Install
 
-1. Download `x-look.zip` (link above) and unzip it into a folder you will keep
-   (Chrome loads the extension from that folder, so do not delete it).
-2. Open `chrome://extensions`.
-3. Turn on **Developer mode**.
-4. **Load unpacked** → pick the unzipped folder (the one containing
-   `manifest.json`).
+1. Download [**x-look.zip**](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip).
+   This link always gives you the latest version.
+2. Unzip it into a folder you will keep, for example `Documents/x-look`.
+   Chrome runs the extension from this folder, so if you delete or move the
+   folder, the extension stops working.
+3. In Chrome's address bar, type `chrome://extensions` and press Enter.
+   The Extensions page opens.
+4. Turn on **Developer mode** in the top-right corner of that page.
+   A **Load unpacked** button appears.
+5. Click **Load unpacked** and choose the folder from step 2, the one that
+   contains `manifest.json`. A card named **Calm Reader for X** appears.
+6. Click the puzzle-piece **Extensions** button in Chrome's toolbar, then click
+   the pin next to **Calm Reader for X**. The yellow X icon now stays in the
+   toolbar.
+7. Open or reload x.com. If the left menu is gone and the posts sit in one
+   quiet column, it is working.
 
-To update, unzip the new release over the same folder and click the reload icon
-on the extension card.
+In Edge, the page in step 3 is `edge://extensions` and **Developer mode** is in
+the left panel. In Brave, the page is `brave://extensions`. The other steps are
+the same.
 
-### From source
+### Switch it off and on
 
-1. `git clone https://github.com/cocodedk/x-look.git`
-2. Open `chrome://extensions`, turn on **Developer mode**.
-3. **Load unpacked** → pick the cloned folder.
+Click the yellow X icon in the toolbar. The icon shows **off**, and x.com looks
+as it normally does in every tab. Click it again to switch X Look back on.
+Chrome remembers your choice.
 
-Works in Chrome, Edge and other Chromium browsers.
+### Update to a new version
 
-Click the X Look icon in the toolbar to switch it off and on in every x.com tab;
-the icon shows an "off" badge while it is off, and the choice is remembered.
-Pin the icon from the extensions (puzzle) menu to keep it in reach.
+1. Download [**x-look.zip**](https://github.com/cocodedk/x-look/releases/latest/download/x-look.zip) again.
+2. Unzip it into the same folder, replacing the old files.
+3. On `chrome://extensions`, click the reload arrow on the **Calm Reader for X**
+   card.
+4. Reload x.com.
+
+[GitHub Releases](https://github.com/cocodedk/x-look/releases) lists every
+version and what changed in it.
+
+### Remove it
+
+On `chrome://extensions`, click **Remove** on the **Calm Reader for X** card.
+You can then delete the folder.
+
+### From the source code (for developers)
+
+1. Run `git clone https://github.com/cocodedk/x-look.git`.
+2. On `chrome://extensions`, turn on **Developer mode**.
+3. Click **Load unpacked** and choose the cloned folder.
 
 ## Files
 
