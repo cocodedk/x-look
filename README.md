@@ -27,8 +27,7 @@ that reads like a list instead of a feed.
   the like/retweet bar dimmed until you hover a post.
 - **Filters posts**: a "Filter posts" box sits in the empty gutter left of the
   column (bottom left on narrow windows). Type words and only posts containing
-  all of them stay; the rest shrink to a thin band (so X does not keep loading
-  more on its own) and are counted under the box. Click the × in the box to
+  all of them stay; the rest are hidden and counted under the box. Click the × in the box to
   clear it and see every post again.
 - **Sorts the posts on the page**: a menu under the filter box re-orders the
   posts X has loaded, newest first, most liked first, or popular now (likes
