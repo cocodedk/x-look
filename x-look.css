@@ -132,27 +132,15 @@ html.xlk .xlk-tile:not(.xlk-shown) > :not(.xlk-reveal) {
   opacity: 0 !important;
 }
 
-/* A post the filter leaves out shrinks to a slim line instead of vanishing.
-   X loads more posts whenever the end of the timeline is in view, so posts
-   of zero height would have it fetch batch after batch on its own. */
+/* A post the filter leaves out shrinks to a thin empty band instead of
+   vanishing. X loads more posts whenever the end of the timeline is in view,
+   so posts of zero height would have it fetch batch after batch on its own. */
 html.xlk article.xlk-filtered {
-  height: 22px !important;
+  height: 8px !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
 
 html.xlk article.xlk-filtered > * {
   display: none !important;
-}
-
-html.xlk article.xlk-filtered::before {
-  content: "hidden by filter";
-  display: block;
-  width: 100%;
-  color: rgba(128, 128, 128, 0.6);
-  font:
-    400 11px / 22px ui-sans-serif,
-    system-ui,
-    sans-serif;
-  text-align: center;
 }
