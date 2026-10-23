@@ -92,7 +92,7 @@ const NOISE = /^(Made with AI|Translated from .+)$/;
 
 // The filter box sits in the empty left gutter, on <body> so X's React tree
 // never touches it. A post stays only if it contains every typed word; the
-// rest shrink to a thin empty band (see x-look.css) and are counted under the box.
+// rest are hidden (see x-look.css) and counted under the box.
 let terms = [];
 // Every post seen while filtering, by its status link, so the count still
 // covers posts X has since scrolled out of the page.
