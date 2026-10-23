@@ -92,7 +92,7 @@ const NOISE = /^(Made with AI|Translated from .+)$/;
 
 // The filter box sits in the empty left gutter, on <body> so X's React tree
 // never touches it. A post stays only if it contains every typed word; the
-// rest shrink to a slim line (see x-look.css) and are counted under the box.
+// rest shrink to a thin empty band (see x-look.css) and are counted under the box.
 let terms = [];
 // Every post seen while filtering, by its status link, so the count still
 // covers posts X has since scrolled out of the page.
@@ -113,7 +113,18 @@ search.addEventListener("input", () => {
   for (const article of document.querySelectorAll("article")) filter(article);
   recount();
 });
-box.append(search, count);
+// The × empties the box, which shows every post again.
+const clear = document.createElement("button");
+clear.type = "button";
+clear.className = "xlk-clear";
+clear.textContent = "×";
+clear.setAttribute("aria-label", "Clear the filter and show all posts");
+clear.addEventListener("click", () => {
+  search.value = "";
+  search.dispatchEvent(new Event("input"));
+  search.focus();
+});
+box.append(search, clear, count);
 document.body.prepend(box);
 
 const matches = (text) => terms.every((term) => text.includes(term));

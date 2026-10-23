@@ -58,7 +58,7 @@ html.xlk .xlk-filter {
 html.xlk .xlk-search {
   width: 100%;
   box-sizing: border-box;
-  padding: 9px 16px;
+  padding: 9px 40px 9px 16px;
   border: 1px solid rgba(128, 128, 128, 0.3);
   border-radius: 999px;
   background: transparent;
@@ -69,6 +69,37 @@ html.xlk .xlk-search {
 
 html.xlk .xlk-search:focus {
   border-color: #1d9bf0;
+}
+
+/* Our own clear button replaces Chrome's tiny built-in one, and only shows
+   while there is something to clear. */
+html.xlk .xlk-search::-webkit-search-cancel-button {
+  display: none;
+}
+
+html.xlk .xlk-clear {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font:
+    400 20px / 1 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+html.xlk .xlk-clear:hover {
+  background: rgba(128, 128, 128, 0.15);
+}
+
+html.xlk .xlk-search:placeholder-shown + .xlk-clear {
+  display: none;
 }
 
 html.xlk .xlk-count {
