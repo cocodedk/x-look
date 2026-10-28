@@ -1,0 +1,172 @@
+/* Cards mode (cards.js): one post per screen over a moving pixel world. Each
+   timeline cell holding a post becomes a slot at least one screen tall with
+   the post as a card in it, and the page snaps from slot to slot. Posts the
+   filter hides are display:none and get no slot. Everything hangs off
+   html.xlk.xlk-cards, so X Look switched off leaves no trace. */
+
+.xlk-world,
+.xlk-top,
+.xlk-cards-toggle {
+  display: none;
+}
+
+/* One post per flick: snap-stop keeps a fast flick from skipping posts. X's
+   header covers the top of the page, so slots snap below it. Only on pages
+   with posts (cards.js sets xlk-snap): elsewhere it would pin the page to
+   the top. */
+html.xlk.xlk-cards.xlk-snap {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--xlk-head);
+}
+
+/* X paints its page colour on body too. As its own stacking context, body
+   paints that colour first and the world (z-index -1) over it. */
+html.xlk.xlk-cards body {
+  isolation: isolate;
+}
+
+/* Behind everything: the page background is painted below it, X's content
+   above it. Pixelated, so the 256 × 144 world stays crisp at any size. */
+html.xlk.xlk-cards .xlk-world {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* The top of the page is a snap point too, so the compose box stays reachable. */
+html.xlk.xlk-cards .xlk-top {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  scroll-snap-align: start;
+}
+
+/* X wraps the column in a 1050px box; x-look.css only centres it, so here it
+   and everything else around the column spans the page. */
+html.xlk.xlk-cards main[role="main"] div:has([data-testid="primaryColumn"]) {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 100%, not 100vw: on a screen narrower than the cards, 100vw counts the
+   scrollbar too and the page would scroll sideways. */
+html.xlk.xlk-cards [data-testid="primaryColumn"] {
+  width: min(1440px, 100%) !important;
+  max-width: 1440px !important;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+/* Every other cell (a "Show more replies" link, the spinner at the end) is a
+   stop of its own, so snapping never hides it between two posts. */
+html.xlk.xlk-cards [data-testid="primaryColumn"] [data-testid="cellInnerDiv"] {
+  scroll-snap-align: start;
+}
+
+html.xlk.xlk-cards
+  [data-testid="primaryColumn"]
+  [data-testid="cellInnerDiv"]:has(article:not(.xlk-filtered, .xlk-gone)) {
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--xlk-head));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* X draws the line between posts on the cell's wrapper. */
+html.xlk.xlk-cards [data-testid="cellInnerDiv"] > div {
+  border-bottom: 0 !important;
+}
+
+html.xlk.xlk-cards [data-testid="cellInnerDiv"] article[data-testid="tweet"] {
+  padding: 18px 22px 14px !important;
+  border: 0 !important;
+  border-radius: 16px;
+  background: var(--xlk-card) !important;
+  box-shadow:
+    0 14px 40px rgba(8, 10, 24, 0.28),
+    0 0 0 1px rgba(128, 128, 128, 0.16);
+}
+
+/* Big type that steps down for long posts (cards.js marks the size). */
+html.xlk.xlk-cards article [data-testid="tweetText"] {
+  font-size: 29px !important;
+  line-height: 1.45 !important;
+}
+
+html.xlk.xlk-cards article[data-xlk-size="short"] [data-testid="tweetText"] {
+  font-size: 34px !important;
+  line-height: 1.35 !important;
+}
+
+html.xlk.xlk-cards article[data-xlk-size="long"] [data-testid="tweetText"] {
+  font-size: 23px !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width: 500px) {
+  html.xlk.xlk-cards article [data-testid="tweetText"] {
+    font-size: 23px !important;
+  }
+
+  html.xlk.xlk-cards article[data-xlk-size="short"] [data-testid="tweetText"] {
+    font-size: 27px !important;
+  }
+
+  html.xlk.xlk-cards article[data-xlk-size="long"] [data-testid="tweetText"] {
+    font-size: 19px !important;
+  }
+}
+
+/* Pictures get more of the screen in a card. */
+html.xlk.xlk-cards .xlk-frame {
+  max-height: 40vh !important;
+}
+
+html.xlk.xlk-cards .xlk-frame.xlk-open {
+  max-height: 70vh !important;
+}
+
+html.xlk.xlk-cards :fullscreen .xlk-frame,
+html.xlk.xlk-cards .xlk-frame:fullscreen {
+  max-height: none !important;
+}
+
+/* The filter box sits on the world, so it gets the card's backing. */
+html.xlk.xlk-cards .xlk-filter {
+  padding: 10px 0;
+  border-radius: 16px;
+  background: var(--xlk-card);
+}
+
+/* The Cards button, under the sort menu and styled like it; lit while on. */
+html.xlk .xlk-cards-toggle {
+  display: block;
+  margin: 8px 16px 0;
+  padding: 4px 12px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+html.xlk .xlk-cards-toggle[aria-pressed="true"] {
+  border-color: transparent;
+  background: #f2c230;
+  color: #1e252b;
+  font-weight: 600;
+}

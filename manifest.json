@@ -19,8 +19,17 @@
   "content_scripts": [
     {
       "matches": ["https://x.com/*", "https://twitter.com/*"],
-      "css": ["x-look.css", "controls.css"],
-      "js": ["x-look.js", "sort.js"],
+      "css": ["x-look.css", "controls.css", "cards.css"],
+      "js": [
+        "x-look.js",
+        "sort.js",
+        "cards-constants.js",
+        "pixels.js",
+        "sprites.js",
+        "world.js",
+        "frame.js",
+        "cards.js"
+      ],
       "run_at": "document_idle"
     }
   ]
