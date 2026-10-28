@@ -121,6 +121,9 @@ You can then delete the folder.
 | `sort.js` | The sort menu: re-orders the loaded posts by time, likes or likes per hour |
 | `controls.css` | Styles for X Look's own controls (reveal buttons, filter box, sort menu) |
 | `x-look.js` | Promoted-post and label hiding, the image/video reveal buttons, the filter box, and following the on/off switch |
+| `cards.js` | Cards mode: the Cards button, one post per screen, and driving the world behind the cards |
+| `cards.css` | Cards mode layout: the cards, big type, snapping from post to post |
+| `cards-constants.js`, `pixels.js`, `sprites.js`, `world.js`, `frame.js` | The moving pixel-art world behind the cards |
 | `icons/` | Extension icons |
 | `website/` | Source of [xlook.cocode.dk](https://xlook.cocode.dk/) (English + Persian) |
 

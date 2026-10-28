@@ -5,7 +5,7 @@
 2. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and pick this folder.
 3. After changing a file, click the reload icon on the extension card and refresh x.com.
 
-There are no dependencies and no build step: the extension is `manifest.json`, `background.js`, `x-look.css`, `x-look.js` and `icons/`.
+There are no dependencies and no build step: the extension is `manifest.json`, `background.js`, the CSS and JS files the manifest lists, and `icons/`.
 
 ## Install Git Hooks
 ```

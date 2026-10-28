@@ -10,9 +10,9 @@ version=${tag#v}
 
 cd "$(dirname "$0")/.."
 rm -rf dist && mkdir -p dist/x-look
-cp -r background.js x-look.css controls.css x-look.js sort.js icons dist/x-look/
+cp -r background.js x-look.css controls.css x-look.js sort.js cards.css cards-constants.js pixels.js sprites.js world.js frame.js cards.js icons dist/x-look/
 jq --arg v "$version" '.version = $v' manifest.json > dist/x-look/manifest.json
-(cd dist/x-look && zip -qrX ../x-look.zip manifest.json background.js x-look.css controls.css x-look.js sort.js icons)
+(cd dist/x-look && zip -qrX ../x-look.zip manifest.json background.js x-look.css controls.css x-look.js sort.js cards.css cards-constants.js pixels.js sprites.js world.js frame.js cards.js icons)
 cp dist/x-look.zip "dist/x-look-$tag.zip"
 
 # Verify what ships, not what was meant to ship.
