@@ -52,7 +52,7 @@ let loop = 0;
 const start = performance.now();
 function tick(now) {
   loop = requestAnimationFrame(tick);
-  if (!on() || now - last < FRAME_MS) return;
+  if (now - last < FRAME_MS) return;
   last = now;
   mark();
   root.classList.toggle("xlk-snap", document.querySelector(SLOT) !== null);
@@ -73,13 +73,18 @@ function tick(now) {
   if (!STILL || moved) render(STILL ? 0 : ((now - start) / 1000) * SPEED, index);
 }
 
+// The loop runs only while Cards and X Look are both on.
+function run() {
+  cancelAnimationFrame(loop);
+  if (on() && root.classList.contains("xlk-cards")) loop = requestAnimationFrame(tick);
+}
+
 function cards(want) {
   if (want === root.classList.contains("xlk-cards")) return;
   const anchor = current();
   root.classList.toggle("xlk-cards", want);
   toggle.setAttribute("aria-pressed", String(want));
-  cancelAnimationFrame(loop);
-  if (want) loop = requestAnimationFrame(tick);
+  run();
   // Bring the post that was on screen back once X has re-laid the timeline out.
   if (!anchor) return;
   requestAnimationFrame(() =>
@@ -92,4 +97,6 @@ function cards(want) {
 chrome.storage.local.get(CARDS_KEY).then((stored) => cards(Boolean(stored[CARDS_KEY])));
 chrome.storage.onChanged.addListener((changes) => {
   if (changes[CARDS_KEY]) cards(Boolean(changes[CARDS_KEY].newValue));
+  // x-look.js, loaded first, has already switched the "xlk" class by now.
+  if (changes.off) run();
 });
