@@ -1,6 +1,6 @@
 # X Look
 
-> X Look is a free Chrome (MV3) extension that turns x.com into a quiet, work-friendly reading list: no left nav, no trends column, no Grok or messages drawer, no promoted posts, one calm centred column, images and videos hidden until you click them, a box that filters posts by words, and a toolbar icon that switches it off and on. It collects nothing and sends nothing anywhere ([privacy](https://xlook.cocode.dk/#privacy)).
+> X Look is a free Chrome (MV3) extension that turns x.com into a quiet, work-friendly reading list: no left nav, no trends column, no Grok or messages drawer, no promoted posts, one calm centred column, images and videos hidden until you click them, a box that filters posts by words, a Cards mode that shows one post per screen over a moving pixel-art world, and a toolbar icon that switches it off and on. It collects nothing and sends nothing anywhere ([privacy](https://xlook.cocode.dk/#privacy)).
 
 This site has WebMCP tools. Both pages register them with `document.modelContext.registerTool`, so an agent in the visitor's browser can call them instead of scraping the page. All four are read-only, take no input, and answer in the page's own language.
 
