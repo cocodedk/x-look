@@ -33,6 +33,10 @@ that reads like a list instead of a feed.
   posts X has loaded, newest first, most liked first, or popular now (likes
   per hour since posting, so new and popular at once), and "X's order" puts
   them back. It sorts what is on the page, not your whole timeline.
+- **Cards mode** (off until you click it): a Cards button under the sort menu
+  shows one post per screen, as a big card up to 1440px wide over a slowly
+  moving pixel-art world that walks on with each post. Scrolling steps from
+  post to post; the filter and sort work as before.
 - **Blanks out images and videos**: each picture becomes a compact grey tile
   with an eye "Image" button, each clip a tile with a play "Video" button
   (hidden clips are paused). Click anywhere on the tile and only that item
